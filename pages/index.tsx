@@ -1,10 +1,18 @@
 import React from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
+import Button from "@/components/Button/Button";
 
 function Index() {
   return (
     <DefaultLayout>
-      index
+      <dl>
+        <dt>버튼</dt>
+        <dd>
+          <Button variant="primary_filled" size="h56" isFullWidth={true}>
+            선택 완료
+          </Button>
+        </dd>
+      </dl>
     </DefaultLayout>
   );
 }

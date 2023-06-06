@@ -8,116 +8,19 @@
     width: 100%;
   }
   // size 정의
-  &--h64 {
-    line-height: 62px;
-    padding: 0 12px;
-    font-size: 18px;
-    font-weight: bold;
-  }
   &--h56 {
     line-height: 54px;
     padding: 0 12px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  &--h48 {
-    line-height: 46px;
-    padding: 0 12px;
     font-size: 16px;
-  }
-  &--h40 {
-    line-height: 38px;
-    padding: 0 12px;
-    font-size: 14px;
-  }
-  &--h32 {
-    line-height: 30px;
-    padding: 0 12px;
-    font-size: 13px;
-  }
-  &--h24 {
-    line-height: 22px;
-    padding: 0 12px;
-    font-size: 12px;
+    font-weight: bold;
   }
   // variant 정의
   &--primary_filled {
-    background-color: $blue080;
+    background-color: $primary-color;
     color: $white;
-    border: 1px solid $blue080;
-    border-radius: 4px;
+    border-radius: 16px;
     &:hover {
       background-color: $blue100;
-      border-color: $blue100;
     }
   }
-  &--primary_outlined {
-    background-color: $white;
-    color: $blue080;
-    border: 1px solid $blue080;
-    border-radius: 4px;
-    &:hover {
-      background-color: $blue020;
-    }
-  }
-  &--secondary_filled {
-    background-color: $gray110;
-    color: $white;
-    border: 1px solid $gray110;
-    border-radius: 4px;
-    &:hover {
-      border-color: $gray120;
-      background-color: $gray120;
-    }
-  }
-  &--secondary_outlined {
-    background-color: $white;
-    color: $gray090;
-    border: 1px solid $border-color;
-    border-radius: 4px;
-    &:hover {
-      background-color: $gray020;
-    }
-  }
-  // link element
-  &--link {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  &--disabled,
-  &--disabled:hover {
-    cursor: default;
-    background-color: $bg-color-disabled;
-    color: $font-color-disabled;
-    border: 1px solid $border-color;
-  }
-}
-
-/// Toggle Text Button
-.toggle-text-button {
-  color: $gray070;
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: -0.5px;
-  line-height: 24px;
-  &__icon {
-    margin-left: 4px;
-    vertical-align: top;
-  }
-  &--disabled {
-    color: $font-color-disabled;
-  }
-}
-
-/// Icon Button
-.icon-button {
-  @include size(24px);
-  &__icon {
-    vertical-align: top;
-  }
-}
-
-.btn_data_add {
-  color: $f-point-blue;
-  @include font(16px, 24px, -1px);
 }

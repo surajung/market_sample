@@ -1,13 +1,13 @@
 import React from "react";
 
-interface PropsType {
+type Props = {
   children: React.ReactNode;
-}
-const DefaultLayout = ({ children }: PropsType) => {
+};
+const DefaultLayout = ({ children }: Props) => {
   return (
     <div id="wrapper">
       <header>header</header>
-      {children}
+      <div className="inner">{children}</div>
     </div>
   );
 };

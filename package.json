@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "market",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
+    "classnames": "^2.3.2",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "next": "13.4.4",
@@ -23,7 +24,7 @@
   "devDependencies": {
     "css-loader": "^6.7.1",
     "prettier": "^2.7.1",
-    "sass": "^1.55.0",
+    "sass": "^1.62.1",
     "sass-loader": "^10.3.1",
     "style-loader": "^3.3.1"
   }

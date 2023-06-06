@@ -32,19 +32,10 @@ button,
 iframe {
   @include cssDefault();
 }
-*, ::after, ::before {
+*,
+::after,
+::before {
   box-sizing: border-box;
-}
-
-@media print {
-  @page {
-    size: A4;
-    margin: 0;
-  }
-  html,
-  body {
-    -webkit-print-color-adjust: exact;
-  }
 }
 
 header,
@@ -60,7 +51,7 @@ input,
 textarea,
 select,
 button {
-  @include borderRadius(0);
+  border-radius: 0;
   box-sizing: border-box;
   font-family: inherit;
 }
@@ -103,7 +94,7 @@ a {
 }
 button {
   border: none;
-  @include borderRadius(0);
+  border-radius: 0;
   background: none;
   cursor: pointer;
   &:disabled {
@@ -117,17 +108,3 @@ button {
 .blind {
   @include blind();
 }
-
-//.dash {
-//  @include after();
-//  @include size(15px , 1px);
-//  background:#fff;
-//  position:absolute;
-//}
-//.bullet {
-//  @include after();
-//  @include size(4px , 4px);
-//  @include borderRadius(3px);
-//  background:#222;
-//  position:absolute;
-//}
