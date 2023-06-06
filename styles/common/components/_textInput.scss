@@ -1,0 +1,28 @@
+.text-input-wrap {
+  position: relative;
+}
+
+.text-input {
+  width: 100%;
+  color: #1c1c1c;
+  letter-spacing: -1px;
+  border-radius: 8px;
+  background-color: $white;
+  border: 1px solid #dee6e7;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+  &:focus {
+    border-color: #00b1bb;
+  }
+  &--h40 {
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

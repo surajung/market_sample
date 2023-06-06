@@ -19,9 +19,6 @@
     background-color: $primary-color;
     color: $white;
     border-radius: 16px;
-    &:hover {
-      background-color: $blue100;
-    }
   }
   &--disabled,
   &--disabled:hover {
