@@ -11,6 +11,14 @@ function Index() {
           <Button variant="primary_filled" size="h56" isFullWidth={true}>
             선택 완료
           </Button>
+          <Button
+            variant="primary_filled"
+            size="h56"
+            isFullWidth={true}
+            isDisabled={true}
+          >
+            선택 완료
+          </Button>
         </dd>
       </dl>
     </DefaultLayout>

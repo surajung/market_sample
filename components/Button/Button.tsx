@@ -16,7 +16,6 @@ const Button = ({
   size,
   children,
 }: Props) => {
-  console.log(variant, typeof isFullWidth, isDisabled, size);
   const classes = classNames("button", {
     [`button--fullwidth`]: isFullWidth,
     [`button--disabled`]: isDisabled,
@@ -24,7 +23,7 @@ const Button = ({
     [`button--${size}`]: size.length,
   });
   return (
-    <button type="button" className={classes}>
+    <button type="button" className={classes} disabled={isDisabled}>
       {children}
     </button>
   );

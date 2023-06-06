@@ -23,4 +23,10 @@
       background-color: $blue100;
     }
   }
+  &--disabled,
+  &--disabled:hover {
+    cursor: default;
+    background-color: $bg-color-disabled;
+    color: $font-color-disabled;
+  }
 }
