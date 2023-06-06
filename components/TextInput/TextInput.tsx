@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FocusEventHandler, useState } from "react";
+import { ChangeEventHandler, FocusEventHandler } from "react";
 import classNames from "classnames";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   value?: string;
   placeholder?: string;
   maxLength?: number | undefined;
-  onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
+  onChange: ChangeEventHandler<HTMLInputElement> | undefined;
   onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
   size: string;
 };
