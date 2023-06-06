@@ -1,0 +1,28 @@
+$font-family: "Malgun Gothic", "-apple-system", "Apple SD Gothice Neo",
+  sans-serif;
+
+// breakpoints
+$breakpoints: (
+  "pc": (
+    min-width: 1260px,
+  ),
+  "tablet": (
+    min-width: 768px,
+  ),
+);
+
+// color
+$f-primary: #373f57;
+$f-secondary: #5c667b;
+$f-tertiary: #8491a7;
+$f-point-blue: #4876ef;
+$f-error: #d63131;
+$b-blue: #4876ef;
+$f-disabled: #b4c0d3;
+
+// z-index
+$z-index-dim: 1000;
+$z-index-modal: 1200;
+
+// Etc
+$full: 100%;

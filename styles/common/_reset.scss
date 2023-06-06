@@ -1,0 +1,133 @@
+/* default */
+html,
+body,
+header,
+nav,
+aside,
+main,
+article,
+section,
+footer,
+h1,
+h2,
+h3,
+h4,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+p,
+em,
+address,
+blockquote,
+q,
+form,
+fieldset,
+input,
+textarea,
+select,
+button,
+iframe {
+  @include cssDefault();
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html,
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+header,
+nav,
+aside,
+main,
+article,
+section,
+footer {
+  display: block;
+}
+input,
+textarea,
+select,
+button {
+  @include borderRadius(0);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+input,
+textarea,
+select {
+  outline: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+img,
+fieldset,
+iframe {
+  border: none;
+}
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+em,
+address {
+  font-style: normal;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  border: none;
+  @include borderRadius(0);
+  background: none;
+  cursor: pointer;
+  &:disabled {
+    cursor: default;
+  }
+}
+.ellipsis {
+  @include ellipsis();
+}
+.hidden,
+.blind {
+  @include blind();
+}
+
+//.dash {
+//  @include after();
+//  @include size(15px , 1px);
+//  background:#fff;
+//  position:absolute;
+//}
+//.bullet {
+//  @include after();
+//  @include size(4px , 4px);
+//  @include borderRadius(3px);
+//  background:#222;
+//  position:absolute;
+//}

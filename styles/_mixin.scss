@@ -1,0 +1,79 @@
+@mixin cssDefault() {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin blind() {
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  opacity: 0;
+}
+
+@mixin image-replace() {
+  text-indent: -100%;
+  font-size: 0;
+  line-height: 0;
+}
+
+@mixin clearfix() {
+  &:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: "";
+  }
+}
+
+@mixin ellipsis($width: $full, $block: block) {
+  display: $block;
+  overflow: hidden;
+  width: $width;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin multiEllipsis($height, $line) {
+  display: block;
+  display: -webkit-box;
+  overflow: hidden;
+  max-height: $height;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+@mixin after() {
+  @include clearfix();
+  display: inline-block;
+  content: "";
+}
+
+@mixin scrollbar() {
+  &::-webkit-scrollbar {
+    width: 13px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: #d7dce5;
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+@mixin font($font-size, $line-height, $letter-spacing) {
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
