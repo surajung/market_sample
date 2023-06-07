@@ -14,6 +14,7 @@ interface Menus {
 function Index() {
   const [keyword, setKeyword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [isModal, setIsModal] = useState(true);
   const [chipsList, setChipsList] = useState<Menus[]>([
     {
       id: 1,
@@ -24,8 +25,11 @@ function Index() {
       name: "양파2",
     },
   ]);
+  const onNodalClose = () => {
+    setIsModal((prev) => !prev);
+  };
   const onChipsDelete = (id: number) => {
-    console.log(id, "삭제");
+    console.log(`${id}번 삭제`);
     setChipsList(chipsList.filter((chips) => chips.id !== id));
   };
   return (
@@ -46,13 +50,13 @@ function Index() {
           </Button>
         </dd>
         <dt>
-          TextInput <i>({keyword})</i>
+          TextInput <i>({keyword ? keyword : "빈값"})</i>
         </dt>
         <dd>
           <TextInput
             id="search"
             value={keyword}
-            placeholder="키워드 입력"
+            placeholder="검색어"
             size="h40"
             maxLength={30}
             onChange={(e) => setKeyword(e.target.value)}
@@ -71,14 +75,27 @@ function Index() {
             선택합니다.
           </Checkbox>
         </dd>
-        <dt>Modal</dt>
+        <dt>
+          Modal{" "}
+          <i>
+            (
+            {isModal ? (
+              "활성화"
+            ) : (
+              <button onClick={() => onNodalClose()}>모달 열기</button>
+            )}
+            )
+          </i>
+        </dt>
         <dd style={{ position: "relative", height: "220px" }}>
-          <Modal title="제목" height="200px">
-            <div className="contents">내용</div>
-            <Button variant="primary_filled" size="h56" isFullWidth={true}>
-              선택하기
-            </Button>
-          </Modal>
+          {isModal && (
+            <Modal title="제목" height="200px" onHandler={() => onNodalClose()}>
+              <div className="contents">내용</div>
+              <Button variant="primary_filled" size="h56" isFullWidth={true}>
+                선택하기
+              </Button>
+            </Modal>
+          )}
         </dd>
         <dt>
           Chips{" "}
