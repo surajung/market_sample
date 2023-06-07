@@ -1,3 +1,4 @@
+// 초기 설정
 @import "variables";
 @import "colors";
 @import "mixin";
@@ -6,8 +7,32 @@
 /* 컴포넌트 */
 @import "./components";
 
-// layout
-.inner {
-  margin: 0 auto;
-  width: 360px;
+// DefaultLayout
+#wrapper {
+  header {
+    border-bottom:1px solid #f5f5f5;
+    height: 52px;
+  }
+  .inner {
+    margin: 0 auto;
+    width: 360px;
+  }
+
+}
+
+// template
+dl {
+  &.template__list {
+    dt {
+      margin-left: -10px;
+      padding-bottom: 5px;
+      font-weight: bold;
+      i {
+        font-weight: normal;
+      }
+    }
+    dd {
+      padding-bottom: 20px;
+    }
+  }
 }

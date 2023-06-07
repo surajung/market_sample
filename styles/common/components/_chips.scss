@@ -1,0 +1,22 @@
+.chips {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+  padding: 6px 40px 6px 12px;
+  border:1px solid #24abbe;
+  border-radius:16px;
+  height: 34px;
+  @include font(14px, 22px, 0);
+  color: #24abbe;
+  &:last-child {
+    margin-right: 0;
+  }
+  &__button--delete {
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5.09493 5.19599L5.14178 5.14172C5.31357 4.96994 5.58238 4.95432 5.77181 5.09487L5.82608 5.14172L10.0001 9.31548L14.174 5.14172C14.363 4.95276 14.6694 4.95276 14.8583 5.14172C15.0473 5.33069 15.0473 5.63706 14.8583 5.82602L10.6846 10L14.8583 14.174C15.0301 14.3458 15.0457 14.6146 14.9052 14.804L14.8583 14.8583C14.6866 15.0301 14.4177 15.0457 14.2283 14.9051L14.174 14.8583L10.0001 10.6845L5.82608 14.8583C5.63712 15.0472 5.33075 15.0472 5.14178 14.8583C4.95282 14.6693 4.95282 14.3629 5.14178 14.174L9.31555 10L5.14178 5.82602C4.97 5.65423 4.95438 5.38542 5.09493 5.19599L5.14178 5.14172L5.09493 5.19599Z' fill='%2324ABBE'/%3E%3C/svg%3E");
+    width: 20px;
+    height: 20px;
+  }
+}

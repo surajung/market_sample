@@ -1,12 +1,11 @@
-import React from "react";
-
-type Props = {
+interface PropsTypes {
+  title: string
   children: React.ReactNode;
 };
-const DefaultLayout = ({ children }: Props) => {
+const DefaultLayout = ({ title="타이틀", children }: PropsTypes) => {
   return (
     <div id="wrapper">
-      <header>header</header>
+      <header>{title}</header>
       <div className="inner">{children}</div>
     </div>
   );

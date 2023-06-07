@@ -32,6 +32,10 @@ button,
 iframe {
   @include cssDefault();
 }
+html, body {
+  color: $font-color-primary;
+  font-family: $font-family;
+}
 *,
 ::after,
 ::before {
