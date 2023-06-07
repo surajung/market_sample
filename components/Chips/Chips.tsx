@@ -1,13 +1,13 @@
 import { MouseEventHandler } from "react";
 
 interface PropsTypes {
-  id: string;
+  id: number;
   name: string;
   onHandler: MouseEventHandler;
 }
 const Chips = ({ id, name, onHandler }: PropsTypes) => {
   return (
-    <div className="chips" id={id}>
+    <div className="chips" id={`id`}>
       {name}
       <button
         type="button"

@@ -23,6 +23,14 @@
 // template
 dl {
   &.template__list {
+    dt {
+      margin-left: -10px;
+      padding-bottom: 5px;
+      font-weight: bold;
+      i {
+        font-weight: normal;
+      }
+    }
     dd {
       padding-bottom: 20px;
     }

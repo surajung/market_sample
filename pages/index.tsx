@@ -31,7 +31,7 @@ function Index() {
   return (
     <DefaultLayout title="Template">
       <dl className="template__list">
-        <dt>버튼</dt>
+        <dt>Button</dt>
         <dd>
           <Button variant="primary_filled" size="h56" isFullWidth={true}>
             선택 완료
@@ -45,7 +45,9 @@ function Index() {
             선택 완료
           </Button>
         </dd>
-        <dt>TextInput</dt>
+        <dt>
+          TextInput <i>({keyword})</i>
+        </dt>
         <dd>
           <TextInput
             id="search"
@@ -56,7 +58,9 @@ function Index() {
             onChange={(e) => setKeyword(e.target.value)}
           ></TextInput>
         </dd>
-        <dt>Checkbox</dt>
+        <dt>
+          Checkbox <i>({isChecked ? "선택" : "해제"})</i>
+        </dt>
         <dd>
           <Checkbox
             id="test"
@@ -76,7 +80,10 @@ function Index() {
             </Button>
           </Modal>
         </dd>
-        <dt>Chips</dt>
+        <dt>
+          Chips{" "}
+          <i>(선택 키워드: {chipsList.map((item) => `${item.name}, `)})</i>
+        </dt>
         <dd>
           {chipsList.map((item) => (
             <Chips
