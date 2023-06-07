@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import Button from "@/components/Button/Button";
 import TextInput from "@/components/TextInput/TextInput";
 import Checkbox from "@/components/Checkbox/Checkbox";
-import Modal from "@/components/Modal/Modal"
+import Modal from "@/components/Modal/Modal";
 import Chips from "@/components/Chips/Chips";
+import MarketItem from "@/components/MarketItem/MarketItem";
+import { MarketItemType } from "@/utils/types";
 
 interface Menus {
   id: number;
@@ -12,6 +14,7 @@ interface Menus {
 }
 
 function Index() {
+  // 컴포넌트 구성을 위한 기본 정보
   const [keyword, setKeyword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [isModal, setIsModal] = useState(true);
@@ -25,6 +28,9 @@ function Index() {
       name: "양파2",
     },
   ]);
+  const [marketItemList, setMarketItemList] = useState<MarketItemType[]>([]);
+
+  // 컴포넌트 인터렉션 핸들러
   const onNodalClose = () => {
     setIsModal((prev) => !prev);
   };
@@ -32,6 +38,11 @@ function Index() {
     console.log(`${id}번 삭제`);
     setChipsList(chipsList.filter((chips) => chips.id !== id));
   };
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((response) => response.json())
+      .then((response) => setMarketItemList(response.products));
+  }, []);
   return (
     <DefaultLayout title="Template">
       <dl className="template__list">
@@ -108,6 +119,20 @@ function Index() {
               name={item.name}
               key={item.id}
               onHandler={() => onChipsDelete(item.id)}
+            />
+          ))}
+        </dd>
+        <dt>상품</dt>
+        <dd>
+          {marketItemList.map((item) => (
+            <MarketItem
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              thumbnail={item.thumbnail}
+              price={item.price * 1350} // 달러를 원화로 변환
+              discountPercentage={item.discountPercentage}
+              key={item.id}
             />
           ))}
         </dd>
