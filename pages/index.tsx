@@ -3,13 +3,14 @@ import DefaultLayout from "@/components/layout/DefaultLayout";
 import Button from "@/components/Button/Button";
 import TextInput from "@/components/TextInput/TextInput";
 import Checkbox from "@/components/Checkbox/Checkbox";
+import Modal from "@/components/Modal/Modal"
 
 function Index() {
   const [keyword, setKeyword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   return (
-    <DefaultLayout>
-      <dl>
+    <DefaultLayout title="Template">
+      <dl className="template__list">
         <dt>버튼</dt>
         <dd>
           <Button variant="primary_filled" size="h56" isFullWidth={true}>
@@ -45,6 +46,20 @@ function Index() {
           >
             선택합니다.
           </Checkbox>
+        </dd>
+        <dt>Modal</dt>
+        <dd style={{position:'relative',height:'220px'}}>
+          <Modal
+            title="제목"
+            height="200px"
+          >
+            <div className="contents">
+              내용
+            </div>
+            <Button variant="primary_filled" size="h56" isFullWidth={true}>
+              선택하기
+            </Button>
+          </Modal>
         </dd>
       </dl>
     </DefaultLayout>

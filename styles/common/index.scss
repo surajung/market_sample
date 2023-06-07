@@ -11,3 +11,12 @@
   margin: 0 auto;
   width: 360px;
 }
+
+// template
+dl {
+  &.template__list {
+    dd {
+      padding-bottom: 20px;
+    }
+  }
+}
