@@ -4,10 +4,30 @@ import Button from "@/components/Button/Button";
 import TextInput from "@/components/TextInput/TextInput";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import Modal from "@/components/Modal/Modal"
+import Chips from "@/components/Chips/Chips";
+
+interface Menus {
+  id: number;
+  name: string;
+}
 
 function Index() {
   const [keyword, setKeyword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [chipsList, setChipsList] = useState<Menus[]>([
+    {
+      id: 1,
+      name: "양파1",
+    },
+    {
+      id: 2,
+      name: "양파2",
+    },
+  ]);
+  const onChipsDelete = (id: number) => {
+    console.log(id, "삭제");
+    setChipsList(chipsList.filter((chips) => chips.id !== id));
+  };
   return (
     <DefaultLayout title="Template">
       <dl className="template__list">
@@ -48,18 +68,24 @@ function Index() {
           </Checkbox>
         </dd>
         <dt>Modal</dt>
-        <dd style={{position:'relative',height:'220px'}}>
-          <Modal
-            title="제목"
-            height="200px"
-          >
-            <div className="contents">
-              내용
-            </div>
+        <dd style={{ position: "relative", height: "220px" }}>
+          <Modal title="제목" height="200px">
+            <div className="contents">내용</div>
             <Button variant="primary_filled" size="h56" isFullWidth={true}>
               선택하기
             </Button>
           </Modal>
+        </dd>
+        <dt>Chips</dt>
+        <dd>
+          {chipsList.map((item) => (
+            <Chips
+              id={item.id}
+              name={item.name}
+              key={item.id}
+              onHandler={() => onChipsDelete(item.id)}
+            />
+          ))}
         </dd>
       </dl>
     </DefaultLayout>
