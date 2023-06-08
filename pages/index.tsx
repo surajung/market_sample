@@ -39,9 +39,9 @@ function Index() {
     setChipsList(chipsList.filter((chips) => chips.id !== id));
   };
   useEffect(() => {
-    fetch("https://dummyjson.com/products")
+    fetch("/api/market")
       .then((response) => response.json())
-      .then((response) => setMarketItemList(response.products));
+      .then((response) => setMarketItemList(response.result));
   }, []);
   return (
     <DefaultLayout title="Template">
@@ -130,7 +130,7 @@ function Index() {
               title={item.title}
               description={item.description}
               thumbnail={item.thumbnail}
-              price={item.price * 1350} // 달러를 원화로 변환
+              price={item.price}
               discountPercentage={item.discountPercentage}
               key={item.id}
             />

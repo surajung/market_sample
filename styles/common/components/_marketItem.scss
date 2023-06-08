@@ -1,6 +1,6 @@
 .market-item {
+  padding-bottom: 16px;
   width: 152px;
-  height: 206px;
   &__image {
     margin: 0;
     width: 152px;
@@ -17,8 +17,21 @@
     padding-top: 8px;
     @include font(12px, 16px, 0);
   }
+  &__before-price {
+    padding-top: 4px;
+    color: #9f9f9f;
+    @include font(12px, 16px, 0);
+    text-decoration: line-through;
+  }
   &__price {
     padding-top: 4px;
+    font-weight: 600;
     @include font(16px, 22px, 0)
+  }
+  .salePoint {
+    padding-right: 4px;
+    font-weight: 600;
+    color: $color-error;
+    @include font(17px, 22px, 0)
   }
 }
