@@ -1,11 +1,14 @@
 // 초기 설정
-@import "variables";
-@import "colors";
-@import "mixin";
-@import "reset";
+@import "./common/variables";
+@import "./common/colors";
+@import "./common/mixin";
+@import "./common/reset";
 
 /* 컴포넌트 */
 @import "./components";
+
+/* 페이지 */
+@import "./pages";
 
 // DefaultLayout
 #wrapper {
