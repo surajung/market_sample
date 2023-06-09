@@ -1,4 +1,4 @@
-export default function handler(req: any, res: any) {
+export default function handler(res: any) {
   res.status(200).json({
     code: 0,
     success: true,

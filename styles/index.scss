@@ -12,11 +12,11 @@
 
 // DefaultLayout
 #wrapper {
-  header {
+  > header {
     border-bottom:1px solid #f5f5f5;
     height: 52px;
   }
-  .inner {
+  > .inner {
     margin: 0 auto;
     width: 360px;
   }
