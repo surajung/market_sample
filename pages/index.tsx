@@ -6,6 +6,7 @@ import Checkbox from "@/components/Checkbox/Checkbox";
 import Modal from "@/components/Modal/Modal";
 import Chips from "@/components/Chips/Chips";
 import MarketItem from "@/components/MarketItem/MarketItem";
+import CategorySelect from "@/components/CategorySelect/CategorySelect";
 import { MarketItemType } from "@/utils/types";
 
 interface Menus {
@@ -31,7 +32,7 @@ function Index() {
   const [marketItemList, setMarketItemList] = useState<MarketItemType[]>([]);
 
   // 컴포넌트 인터렉션 핸들러
-  const onNodalClose = () => {
+  const onModalClose = () => {
     setIsModal((prev) => !prev);
   };
   const onChipsDelete = (id: number) => {
@@ -93,14 +94,15 @@ function Index() {
             {isModal ? (
               "활성화"
             ) : (
-              <button onClick={() => onNodalClose()}>모달 열기</button>
+              <button onClick={() => onModalClose()}>모달 열기</button>
             )}
             )
           </i>
         </dt>
-        <dd style={{ position: "relative", height: "220px" }}>
+        <dd style={{ position: "relative", height: "520px" }}>
           {isModal && (
-            <Modal title="제목" height="200px" onHandler={() => onNodalClose()}>
+            <Modal title="제목" height="500px" onHandler={() => onModalClose()}>
+              <CategorySelect />
               <div className="contents">내용</div>
               <Button variant="primary_filled" size="h56" isFullWidth={true}>
                 선택하기
