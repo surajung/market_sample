@@ -18,6 +18,8 @@
   }
   &__depth2 {
     padding-top: 16px;
+    height: 298px;
+    overflow-y: scroll;
     &>li {
       position: relative;
       border-bottom: 1px solid #f4f5f7;

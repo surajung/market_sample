@@ -103,7 +103,6 @@ function Index() {
           {isModal && (
             <Modal title="제목" height="500px" onHandler={() => onModalClose()}>
               <CategorySelect />
-              <div className="contents">내용</div>
               <Button variant="primary_filled" size="h56" isFullWidth={true}>
                 선택하기
               </Button>
