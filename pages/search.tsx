@@ -1,15 +1,35 @@
 import {useState,useEffect} from "react"
+import Link from "next/link"
 import DefaultLayout from "@/components/layout/DefaultLayout"
 import TextInput from "@/components/TextInput/TextInput"
+import Chips from "@/components/Chips/Chips";
 import MarketItem from "@/components/MarketItem/MarketItem";
 import Modal from "@/components/Modal/Modal";
 import CategorySelect from "@/components/CategorySelect/CategorySelect";
 import Button from "@/components/Button/Button";
 import { MarketItemType } from "@/utils/types";
+interface Menus {
+  id: number;
+  name: string;
+}
 
 const Search = () => {
   const [keyword, setKeyword] = useState("");
   const [isModal, setIsModal] = useState(false);
+  const [chipsList, setChipsList] = useState<Menus[]>([
+    {
+      id: 1,
+      name: "양파1",
+    },
+    {
+      id: 2,
+      name: "양파2",
+    },
+  ]);
+  const onChipsDelete = (id: number) => {
+    console.log(`${id}번 삭제`);
+    setChipsList(chipsList.filter((chips) => chips.id !== id));
+  };
   const [marketItemList, setMarketItemList] = useState<MarketItemType[]>([]);
 
   const toggleModal = () => {
@@ -32,9 +52,11 @@ const Search = () => {
             maxLength={30}
             onChange={(e) => setKeyword(e.target.value)}
           ></TextInput>
-          <button className="button__cart-page" type="button">
-            <span className="blind">장바구니</span>
-          </button>
+          <Link href="./cart">
+            <button className="button__cart-page" type="button">
+              <span className="blind">장바구니</span>
+            </button>
+          </Link>
         </div>
         {false && (
           <ul className="search__autocorrect">
@@ -46,7 +68,16 @@ const Search = () => {
           </ul>
         )}
         <div className="search__filter">
-          <div className="search__filter--keyword"></div>
+          <div className="search__filter--keyword">
+            {chipsList.map((item) => (
+              <Chips
+                id={item.id}
+                name={item.name}
+                key={item.id}
+                onHandler={() => onChipsDelete(item.id)}
+              />
+          ))}
+          </div>
           <button className="search__filter--button" type="button" onClick={() => toggleModal()}><span className="blind">카테고리</span></button>
         </div>
         <div className="search__list">

@@ -63,7 +63,7 @@ function Index() {
         </dd>
         <dt>
           TextInput <i>({keyword ? keyword : "빈값"})</i>
-        </dt>
+        </dt>1
         <dd>
           <TextInput
             id="search"
