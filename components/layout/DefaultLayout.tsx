@@ -5,7 +5,10 @@ interface PropsTypes {
 const DefaultLayout = ({ title, children }: PropsTypes) => {
   return (
     <div id="wrapper">
-      {title && <header>{title}</header>} 
+      {title && <header>
+        <button className="button__back" type="button"></button>
+        {title}
+        </header>} 
       <div className="inner">{children}</div>
     </div>
   );

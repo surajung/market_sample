@@ -1,0 +1,16 @@
+.cartPage {
+  padding-top: 16px;
+  &__list {
+      .inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 22px;
+        width: 100%;
+  
+        li {
+          position: relative;
+        }
+      }
+    }
+}

@@ -63,7 +63,17 @@ const CategorySelect = () => {
               }`}
             >
               {depth3List.map((item3: CodesProps) => (
-                <li key={item3.code}>{item3.codeName}</li>
+                <li key={item3.code}>
+                    <Checkbox
+                      id="test"
+                      size="h24"
+                      isChecked={isChecked}
+                      onChange={setIsChecked}
+                    >
+                      선택합니다.
+                    </Checkbox>
+                  {item3.codeName}
+                </li>
               ))}
             </ul>
           </li>
