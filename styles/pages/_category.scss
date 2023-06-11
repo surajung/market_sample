@@ -47,5 +47,10 @@
     &--open {
       display: block;
     }
+    li {
+      border-top: 1px solid #f4f5f7;
+      padding:12px 0 12px 21px;
+      height:48px;
+    }
   }
 }

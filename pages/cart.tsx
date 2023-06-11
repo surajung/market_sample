@@ -16,7 +16,9 @@ const Cart = () => {
         <div className="cartPage__list">
           <ul className="inner">
           {marketItemList.map((item) => (
-            <li>
+            <li
+              key={item.id}
+            >
               <MarketItem
                 id={item.id}
                 title={item.title}
@@ -24,7 +26,6 @@ const Cart = () => {
                 thumbnail={item.thumbnail}
                 price={item.price}
                 discountPercentage={item.discountPercentage}
-                key={item.id}
               />
               <button className="button__delete" type="button">
                 <span className="blind">장바구니에서 삭제</span>
