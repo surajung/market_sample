@@ -2,10 +2,11 @@ interface PropsTypes {
   title?: string
   children: React.ReactNode;
 };
-const DefaultLayout = ({ title="타이틀", children }: PropsTypes) => {
+const DefaultLayout = ({ title, children }: PropsTypes) => {
   return (
     <div id="wrapper">
-      {children}
+      {title && <header>{title}</header>} 
+      <div className="inner">{children}</div>
     </div>
   );
 };
