@@ -26,8 +26,8 @@ const Cart = () => {
                 discountPercentage={item.discountPercentage}
                 key={item.id}
               />
-              <button className="button__cart" type="button">
-                <span className="blind">장바구니에 담기</span>
+              <button className="button__delete" type="button">
+                <span className="blind">장바구니에서 삭제</span>
               </button>
             </li>
           ))}
