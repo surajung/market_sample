@@ -35,10 +35,6 @@ const codes = {
         code: "c05",
         codeName: "laptops",
       },
-      {
-        code: "c06",
-        codeName: "skincare",
-      },
     ],
     depth3: [
       {
