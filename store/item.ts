@@ -18,5 +18,6 @@ interface SeletItemCartState {
 
 export const useItemCartStore = create<SeletItemCartState>((set) => ({
   itemCart: [],
-  setItemCart: (select) => set((state) => ({ ...state, itemCart: select })),
+  setItemCart: (select) =>
+    set((state) => ({ itemCart: state.itemCart.concat(select) })),
 }));

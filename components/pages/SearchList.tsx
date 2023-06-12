@@ -13,7 +13,11 @@ const SearchList = ({ keywordQuery, itemList = [] }: PropsType) => {
   const item = useItemStore<MarketItemType[]>((state) => state.item);
   const { itemCart, setItemCart } = useItemCartStore((state: any) => state);
   const onCartItem = (id: number) => {
-    setItemCart(item.filter((i) => i.id === id));
+    if (itemCart.some((x: MarketItemType) => x.id === id)) {
+      alert("이미 장바구니에 담겨있습니다");
+      return;
+    }
+    setItemCart(item.filter((i: MarketItemType) => i.id === id));
   };
   useEffect(() => {
     setItemList(itemList);
