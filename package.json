@@ -24,6 +24,7 @@
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "axios": "^1.2.1",
     "css-loader": "^6.7.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

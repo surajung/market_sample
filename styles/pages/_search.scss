@@ -5,7 +5,15 @@
     padding: 6px 52px 6px 22px;
   }
   &__autocorrect {
+    position: absolute;
+    top: 53px;
+    left: 0;
+    z-index: 10;
     padding: 0 20px;
+    background-color: $white;
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
     li {
       padding: 10px 0;
       border-bottom: 1px solid #f4f5f7;
