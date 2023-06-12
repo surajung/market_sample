@@ -13,17 +13,26 @@ import { MarketItemType } from "@/utils/types";
 
 const Search = () => {
   const router = useRouter();
-  const [isModal, setIsModal] = useState(false);
-  const [keyword, setKeyword] = useState("");
-  const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
+  const [isModal, setIsModal] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>("");
+  const itemList = useItemStore<MarketItemType[]>((state) => state.item);
   const [searchResult, setSearchResult] = useState<MarketItemType[]>([]);
 
+  /**
+   * 아이템 리스트 store 설정 hook
+   */
   const { status } = useItemList();
 
+  /**
+   * 필터 모달 토글
+   */
   const toggleModal = () => {
     setIsModal((prev) => !prev);
   };
 
+  /**
+   * 파라미터에 검색키워드 주입시 리스트 필터링
+   */
   useEffect(() => {
     if (!router.isReady) {
       return;

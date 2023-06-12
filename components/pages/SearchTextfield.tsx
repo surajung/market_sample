@@ -13,16 +13,19 @@ interface PropsType {
 const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
   const router = useRouter();
   const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
-  const [keyword, setKeyword] = useState(keywordQuery);
-  const [isAutocorrect, setIsAutocorrect] = useState(false);
+  const [keyword, setKeyword] = useState<string>(keywordQuery);
+  const [isAutocorrectLayer, setIsAutocorrectLayer] = useState<boolean>(false);
   const [autocorrectList, setAutocorrectList] = useState<MarketItemType[]>([]);
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     router.push(`/search/?keyword=${keyword}`);
     event.preventDefault();
   };
 
+  /**
+   * 검색어 입력되면 자동완성 리스트 노출
+   */
   useEffect(() => {
-    setIsAutocorrect(keyword !== "");
+    setIsAutocorrectLayer(keyword !== "");
     setAutocorrectList(
       itemList.filter((item: MarketItemType) => {
         return item.title.includes(keyword);
@@ -45,7 +48,7 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
       <Link href="./cart" className="button__cart-page">
         <span className="blind">장바구니</span>
       </Link>
-      {isAutocorrect && (
+      {isAutocorrectLayer && (
         <ul className="search__autocorrect">
           {autocorrectList.map((item, index) => (
             <li key={index}>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MarketItem from "@/components/MarketItem/MarketItem";
-import { useItemStore } from "@/store/item";
+import { useItemStore, useItemCartStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
 interface PropsType {
@@ -10,6 +10,11 @@ interface PropsType {
 
 const SearchList = ({ keywordQuery, itemList = [] }: PropsType) => {
   const [itemlist, setItemList] = useState<MarketItemType[]>([]);
+  const item = useItemStore<MarketItemType[]>((state) => state.item);
+  const { itemCart, setItemCart } = useItemCartStore((state: any) => state);
+  const onCartItem = (id: number) => {
+    setItemCart(item.filter((i) => i.id === id));
+  };
   useEffect(() => {
     setItemList(itemList);
   }, [itemlist]);
@@ -29,7 +34,11 @@ const SearchList = ({ keywordQuery, itemList = [] }: PropsType) => {
                 price={item.price}
                 discountPercentage={item.discountPercentage}
               />
-              <button className="button__cart" type="button">
+              <button
+                className="button__cart"
+                type="button"
+                onClick={() => onCartItem(item.id)}
+              >
                 <span className="blind">장바구니에 담기</span>
               </button>
             </li>
