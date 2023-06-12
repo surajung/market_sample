@@ -1,15 +1,25 @@
 import {useState,useEffect} from "react"
-import TextInput from "@/components/TextInput/TextInput"
+import { useRouter } from "next/router";
+import TextInput from "@/components/TextInput/TextInput";
 import KeywordHighlight from "@/components/KeywordHighlight/KeywordHighlight";
 import Link from "next/link";
 import { useItemStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
-const SearchTextfield = () => {
+interface PropsType {
+  keywordQuery?: string;
+}
+
+const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
+  const router = useRouter();
   const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState(keywordQuery);
   const [isAutocorrect, setIsAutocorrect] = useState(false);
   const [autocorrectList, setAutocorrectList] = useState<MarketItemType[]>([]);
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    router.push(`/search/?keyword=${keyword}`);
+    event.preventDefault();
+  };
 
   useEffect(() => {
     setIsAutocorrect(keyword !== "");
@@ -22,14 +32,16 @@ const SearchTextfield = () => {
 
   return (
     <div className="search__textfield">
-      <TextInput
-        id="search"
-        value={keyword}
-        placeholder="검색어"
-        size="h40"
-        maxLength={30}
-        onChange={(e) => setKeyword(e.target.value)}
-      ></TextInput>
+      <form onSubmit={onSubmit}>
+        <TextInput
+          id="search"
+          value={keyword}
+          placeholder="검색어"
+          size="h40"
+          maxLength={30}
+          onChange={(e) => setKeyword(e.target.value)}
+        ></TextInput>
+      </form>
       <Link href="./cart" className="button__cart-page">
         <span className="blind">장바구니</span>
       </Link>
