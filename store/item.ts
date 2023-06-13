@@ -21,6 +21,7 @@ const initialState: CartStoreStates = {
 interface SeletItemCartState {
   itemCart: MarketItemType[];
   setItemCart: (select: MarketItemType[]) => void;
+  removeItemCart: (select: MarketItemType[]) => void;
 }
 
 export const useItemCartStore = create<CartStore>(
@@ -29,6 +30,7 @@ export const useItemCartStore = create<CartStore>(
       itemCart: initialState.itemCart,
       setItemCart: (select) =>
         set((state) => ({ itemCart: state.itemCart.concat(select) })),
+      removeItemCart: (select: any) => set((state) => ({ itemCart: select })),
     }),
     {
       name: "cartStorage",

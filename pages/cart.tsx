@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import MarketItem from "@/components/MarketItem/MarketItem";
+import useItemList from "@/hook/useItemList";
 import { useItemCartStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
 const Cart = () => {
-  const ItemCart = useItemCartStore<MarketItemType[]>(
-    (state) => state.itemCart
-  );
+  const { itemCart, removeItemCart } = useItemCartStore((state: any) => state);
   const [cartList, setCartList] = useState<MarketItemType[]>([]);
+  const onRemoveCartItem = (id: number) => {
+    console.log(itemCart);
+    removeItemCart(itemCart.filter((i: MarketItemType) => i.id !== id));
+  };
   useEffect(() => {
-    setCartList(ItemCart);
-  }, []);
+    setCartList(itemCart);
+  }, [itemCart]);
   return (
     <DefaultLayout title="장바구니">
       <div className="cartPage">
@@ -27,7 +30,11 @@ const Cart = () => {
                   price={item.price}
                   discountPercentage={item.discountPercentage}
                 />
-                <button className="button__delete" type="button">
+                <button
+                  className="button__delete"
+                  type="button"
+                  onClick={() => onRemoveCartItem(item.id)}
+                >
                   <span className="blind">장바구니에서 삭제</span>
                 </button>
               </li>
