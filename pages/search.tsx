@@ -53,7 +53,7 @@ const Search = () => {
           <SearchList keywordQuery={keyword} itemList={data} />
         </div>
         {isModal && (
-          <Modal title="제목" height="500px" onHandler={toggleModal}>
+          <Modal title="카테고리" height="500px" onHandler={toggleModal}>
             <CategorySelect />
           </Modal>
         )}

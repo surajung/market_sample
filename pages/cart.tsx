@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import MarketItem from "@/components/MarketItem/MarketItem";
-import useItemList from "@/hook/useItemList";
 import { useItemCartStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
@@ -9,7 +8,6 @@ const Cart = () => {
   const { itemCart, removeItemCart } = useItemCartStore((state: any) => state);
   const [cartList, setCartList] = useState<MarketItemType[]>([]);
   const onRemoveCartItem = (id: number) => {
-    console.log(itemCart);
     removeItemCart(itemCart.filter((i: MarketItemType) => i.id !== id));
   };
   useEffect(() => {

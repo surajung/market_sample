@@ -10,7 +10,7 @@ const MarketItem = ({
 }: MarketItemType) => {
   return (
     <>
-      <div className="market-item" id={`id`}>
+      <div className="market-item" id={String(id)}>
         <figure className="market-item__image" title={description}>
           <img src={thumbnail} alt={description} />
         </figure>
