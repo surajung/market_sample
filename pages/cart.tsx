@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import MarketItem from "@/components/MarketItem/MarketItem";
 import { useItemCartStore } from "@/store/item";
@@ -7,13 +8,16 @@ const Cart = () => {
   const ItemCart = useItemCartStore<MarketItemType[]>(
     (state) => state.itemCart
   );
-  console.log(ItemCart);
+  const [cartList, setCartList] = useState<MarketItemType[]>([]);
+  useEffect(() => {
+    setCartList(ItemCart);
+  }, []);
   return (
     <DefaultLayout title="장바구니">
       <div className="cartPage">
         <div className="cartPage__list">
           <ul className="inner">
-            {ItemCart.map((item) => (
+            {cartList.map((item) => (
               <li key={item.id}>
                 <MarketItem
                   id={item.id}
