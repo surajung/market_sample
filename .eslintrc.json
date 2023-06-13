@@ -4,5 +4,5 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "plugins": ["react", "react-hooks", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier"]
 }
