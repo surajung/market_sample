@@ -8,14 +8,12 @@ import Modal from "@/components/Modal/Modal";
 import CategorySelect from "@/components/CategorySelect/CategorySelect";
 import Spinner from "@/components/Spinner/Spinner";
 import useItemList from "@/hook/useItemList";
-// import { useItemStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
 const Search = () => {
   const router = useRouter();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
-  // const itemList = useItemStore<MarketItemType[]>((state) => state.item);
   const [searchResult, setSearchResult] = useState<MarketItemType[]>([]);
 
   /**
@@ -40,7 +38,7 @@ const Search = () => {
     if (typeof router.query.keyword === "string") {
       setKeyword(router.query.keyword);
     }
-  }, [router.query]);
+  }, [router.isReady, router.query.keyword]);
 
   if (status !== "success") {
     return <Spinner />;
@@ -50,7 +48,7 @@ const Search = () => {
         <div className="search">
           <SearchTextfield keywordQuery={keyword} />
           <SearchFilter onHandler={toggleModal} />
-          <SearchList keywordQuery={keyword} itemList={data} />
+          <SearchList keywordQuery={keyword} />
         </div>
         {isModal && (
           <Modal title="카테고리" height="500px" onHandler={toggleModal}>

@@ -5,7 +5,7 @@ export interface MarketItemType {
   thumbnail: string;
   price: number;
   discountPercentage: number;
-  depth1: string;
-  depth2: string;
-  depth3: string;
+  depth1?: string;
+  depth2?: string;
+  depth3?: string;
 }

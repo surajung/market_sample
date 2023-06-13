@@ -7,13 +7,17 @@ interface SeletItemState {
   item: MarketItemType[];
   setItem: (list: MarketItemType[]) => void;
 }
-
+/**
+ * @deprecated
+ * 최초 아이템 리스트 store
+ * react-query chace 로 인해 불필요
+ */
 export const useItemStore = create<SeletItemState>((set) => ({
   item: [],
   setItem: (list) => set((state) => ({ ...state, item: list })),
 }));
 
-// 스토어 내 state 초기값에 대한 정의
+// 장바구니 스토어 내 state 초기값에 대한 정의
 const initialState: CartStoreStates = {
   itemCart: [],
 };
@@ -24,6 +28,10 @@ interface SeletItemCartState {
   removeItemCart: (select: MarketItemType[]) => void;
 }
 
+/**
+ * 장바구니 스토어
+ * localStorage를 활용하여 데이터를 브라우져에 저장
+ */
 export const useItemCartStore = create<CartStore>(
   (persist as CartStorePersist)(
     (set) => ({

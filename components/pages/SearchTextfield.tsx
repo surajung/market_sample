@@ -1,9 +1,8 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import TextInput from "@/components/TextInput/TextInput";
 import KeywordHighlight from "@/components/KeywordHighlight/KeywordHighlight";
 import Link from "next/link";
-// import { useItemStore } from "@/store/item";
 import useItemList from "@/hook/useItemList";
 import { MarketItemType } from "@/utils/types";
 
@@ -13,7 +12,6 @@ interface PropsType {
 
 const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
   const router = useRouter();
-  // const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
   const [keyword, setKeyword] = useState<string>(keywordQuery);
   const [isAutocorrectLayer, setIsAutocorrectLayer] = useState<boolean>(false);
   const [autocorrectList, setAutocorrectList] = useState<MarketItemType[]>([]);
@@ -21,8 +19,13 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
    * 아이템 리스트 get hook
    */
   const { data } = useItemList();
+
+  /**
+   * 검색어입력 submit -> 파라미터로 검색어 주입
+   */
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     router.push(`/search/?keyword=${keyword}`);
+    setIsAutocorrectLayer(false);
     event.preventDefault();
   };
 
@@ -38,7 +41,7 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
         })
       );
     }
-  }, [keyword]);
+  }, [keyword, data]);
 
   return (
     <div className="search__textfield">

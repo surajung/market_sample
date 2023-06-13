@@ -126,13 +126,13 @@ const CategorySelect = () => {
                     values={filterList}
                     onChange={setFilterList}
                   >
-                    {/* {category.depth3.map((item3: CodesType) => (
+                    {category.depth3.map((item3: CodesType) => (
                       <li key={item3.code}>
                         <Checkbox size="h24" value={item3.code}>
                           {item3.codename}
                         </Checkbox>
                       </li>
-                    ))} */}
+                    ))}
                   </CheckboxGroup>
                 </ul>
               </fieldset>

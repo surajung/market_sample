@@ -5,7 +5,7 @@
 ## ⚙️ 개발스택
 - javascript FW : `React18` + `Next13` + `Typescript`
 - 상태관리 : `React-query`, `Zustand`
-- Styleing : Scss(Sass)
+- Styling : Scss(Sass)
 - etc: eslint, prettier
 - commit message
   - feat: 기능개발

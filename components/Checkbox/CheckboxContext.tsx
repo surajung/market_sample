@@ -1,9 +1,13 @@
 import { createContext } from "react";
 
-// type Props {
-//   isChecked: boolean;
-//   toggleValue: boolean;
-// }
-// type PropsType = Props
-const CheckboxContext = createContext<any | undefined>(undefined);
+type Prop = {
+  checked: boolean;
+  value: string;
+};
+
+interface PropsType {
+  isChecked: (value: string) => boolean;
+  toggleValue: ({ checked, value }: Prop) => void;
+}
+const CheckboxContext = createContext<PropsType | undefined>(undefined);
 export default CheckboxContext;

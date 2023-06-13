@@ -6,17 +6,19 @@ import { MarketItemType } from "@/utils/types";
 
 interface PropsType {
   keywordQuery: string;
-  itemList?: MarketItemType[];
 }
 
-const SearchList = ({ keywordQuery, itemList = [] }: PropsType) => {
-  const [itemlist, setItemList] = useState<MarketItemType[]>([]);
-  // const item = useItemStore<MarketItemType[]>((state) => state.item);
+const SearchList = ({ keywordQuery }: PropsType) => {
+  const [itemList, setItemList] = useState<MarketItemType[]>([]);
   const { itemCart, setItemCart } = useItemCartStore((state: any) => state);
   /**
    * 아이템 리스트 get hook
    */
   const { data } = useItemList();
+
+  /**
+   * 장바구니 로직
+   */
   const onCartItem = (id: number) => {
     if (itemCart.some((x: MarketItemType) => x.id === id)) {
       alert("이미 장바구니에 담겨있습니다");
@@ -24,14 +26,18 @@ const SearchList = ({ keywordQuery, itemList = [] }: PropsType) => {
     }
     if (data) setItemCart(data.filter((i: MarketItemType) => i.id === id));
   };
+
+  /**
+   * 아이템 data fetch
+   */
   useEffect(() => {
-    setItemList(itemList);
-  }, [itemlist]);
+    if (data) setItemList(data);
+  }, [data]);
 
   return (
     <div className="search__list">
       <ul className="inner">
-        {itemlist
+        {itemList
           .filter((list) => list.title.includes(keywordQuery))
           .map((item) => (
             <li key={item.id}>

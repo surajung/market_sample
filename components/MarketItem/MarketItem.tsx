@@ -1,4 +1,5 @@
 import { MarketItemType } from "@/utils/types";
+import Image from "next/image";
 
 const MarketItem = ({
   id,
@@ -12,7 +13,13 @@ const MarketItem = ({
     <>
       <div className="market-item" id={String(id)}>
         <figure className="market-item__image" title={description}>
-          <img src={thumbnail} alt={description} />
+          <Image
+            src={thumbnail}
+            width={152}
+            height={152}
+            alt={description}
+            priority
+          />
         </figure>
         <p className="market-item__title">{title}</p>
         {discountPercentage !== 0 && (

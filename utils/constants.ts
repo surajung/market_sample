@@ -1,3 +1,6 @@
+/**
+ * 카테고리 코드값
+ */
 const codes = {
   marketItemCategory: {
     depth1: [

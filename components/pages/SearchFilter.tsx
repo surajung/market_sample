@@ -1,4 +1,4 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react";
 import Chips from "@/components/Chips/Chips";
 
 interface PropsTypes {
@@ -9,7 +9,7 @@ interface Menus {
   name: string;
 }
 
-const SearchFilter = ({onHandler}: PropsTypes) => {
+const SearchFilter = ({ onHandler }: PropsTypes) => {
   const [chipsList, setChipsList] = useState<Menus[]>([
     {
       id: 1,
@@ -34,10 +34,16 @@ const SearchFilter = ({onHandler}: PropsTypes) => {
             key={item.id}
             onHandler={() => onChipsDelete(item.id)}
           />
-      ))}
+        ))}
       </div>
-      <button className="search__filter--button" type="button" onClick={onHandler}><span className="blind">카테고리</span></button>
+      <button
+        className="search__filter--button"
+        type="button"
+        onClick={onHandler}
+      >
+        <span className="blind">카테고리</span>
+      </button>
     </div>
   );
-}
+};
 export default SearchFilter;

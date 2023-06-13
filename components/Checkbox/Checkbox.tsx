@@ -26,7 +26,9 @@ const Checkbox = ({
   const onChangeCheckbox = (bl: boolean) => {
     onChange(bl);
   };
+
   if (!context) {
+    // 단일 checkbox
     const wrapClasses = classNames("checkbox-wrap", {
       "checkbox-wrap--checked": checked,
       "checkbox-wrap--disabled": isDisabled,
@@ -50,6 +52,7 @@ const Checkbox = ({
       </div>
     );
   } else {
+    // context를 활용 checkbox group
     const { isChecked, toggleValue } = context;
 
     const wrapClasses = classNames("checkbox-wrap", {
