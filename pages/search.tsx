@@ -8,20 +8,20 @@ import Modal from "@/components/Modal/Modal";
 import CategorySelect from "@/components/CategorySelect/CategorySelect";
 import Spinner from "@/components/Spinner/Spinner";
 import useItemList from "@/hook/useItemList";
-import { useItemStore } from "@/store/item";
+// import { useItemStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
 const Search = () => {
   const router = useRouter();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
-  const itemList = useItemStore<MarketItemType[]>((state) => state.item);
+  // const itemList = useItemStore<MarketItemType[]>((state) => state.item);
   const [searchResult, setSearchResult] = useState<MarketItemType[]>([]);
 
   /**
-   * 아이템 리스트 store 설정 hook
+   * 아이템 리스트 get hook
    */
-  const { status } = useItemList();
+  const { status, data } = useItemList();
 
   /**
    * 필터 모달 토글
@@ -50,7 +50,7 @@ const Search = () => {
         <div className="search">
           <SearchTextfield keywordQuery={keyword} />
           <SearchFilter onHandler={toggleModal} />
-          <SearchList keywordQuery={keyword} itemList={itemList} />
+          <SearchList keywordQuery={keyword} itemList={data} />
         </div>
         {isModal && (
           <Modal title="제목" height="500px" onHandler={toggleModal}>

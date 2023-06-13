@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import TextInput from "@/components/TextInput/TextInput";
 import KeywordHighlight from "@/components/KeywordHighlight/KeywordHighlight";
 import Link from "next/link";
-import { useItemStore } from "@/store/item";
+// import { useItemStore } from "@/store/item";
+import useItemList from "@/hook/useItemList";
 import { MarketItemType } from "@/utils/types";
 
 interface PropsType {
@@ -12,10 +13,14 @@ interface PropsType {
 
 const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
   const router = useRouter();
-  const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
+  // const itemList = useItemStore<MarketItemType[]>((state: any) => state.item);
   const [keyword, setKeyword] = useState<string>(keywordQuery);
   const [isAutocorrectLayer, setIsAutocorrectLayer] = useState<boolean>(false);
   const [autocorrectList, setAutocorrectList] = useState<MarketItemType[]>([]);
+  /**
+   * 아이템 리스트 get hook
+   */
+  const { data } = useItemList();
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     router.push(`/search/?keyword=${keyword}`);
     event.preventDefault();
@@ -26,11 +31,13 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
    */
   useEffect(() => {
     setIsAutocorrectLayer(keyword !== "");
-    setAutocorrectList(
-      itemList.filter((item: MarketItemType) => {
-        return item.title.includes(keyword);
-      })
-    );
+    if (data) {
+      setAutocorrectList(
+        data.filter((item: MarketItemType) => {
+          return item.title.includes(keyword);
+        })
+      );
+    }
   }, [keyword]);
 
   return (
