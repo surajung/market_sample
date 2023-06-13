@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { MarketItemType } from "@/utils/types";
-import { ICartStore, ICartStorePersist, ICartStoreStates } from "./itemType";
+import { CartStore, CartStorePersist, CartStoreStates } from "./itemType";
 
 interface SeletItemState {
   item: MarketItemType[];
@@ -13,14 +13,8 @@ export const useItemStore = create<SeletItemState>((set) => ({
   setItem: (list) => set((state) => ({ ...state, item: list })),
 }));
 
-const dummyStorageApi = {
-  getItem: () => null,
-  setItem: () => undefined,
-  removeItem: () => undefined,
-};
-
 // 스토어 내 state 초기값에 대한 정의
-const initialState: ICartStoreStates = {
+const initialState: CartStoreStates = {
   itemCart: [],
 };
 
@@ -29,8 +23,8 @@ interface SeletItemCartState {
   setItemCart: (select: MarketItemType[]) => void;
 }
 
-export const useItemCartStore = create<ICartStore>(
-  (persist as ICartStorePersist)(
+export const useItemCartStore = create<CartStore>(
+  (persist as CartStorePersist)(
     (set) => ({
       itemCart: initialState.itemCart,
       setItemCart: (select) =>
@@ -38,12 +32,7 @@ export const useItemCartStore = create<ICartStore>(
     }),
     {
       name: "cartStorage",
-      // partialize: (state) => ({ cartList: state.itemCart }),
-      // storage: createJSONStorage(() => sessionStorage),
-      storage: createJSONStorage(() =>
-        typeof window !== "undefined" ? window.localStorage : dummyStorageApi
-      ),
-      // typeof window !== "undefined" ? window.localStorage : dummyStorageApi,
+      storage: createJSONStorage(() => window.localStorage),
     }
   )
 );

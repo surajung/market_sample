@@ -2,18 +2,18 @@ import { StateCreator } from "zustand";
 import { PersistOptions } from "zustand/middleware";
 import { MarketItemType } from "@/utils/types";
 
-export interface ICartStoreStates {
+export interface CartStoreStates {
   // 상품 리스트
   itemCart: MarketItemType[];
 }
 
-export type ICartStorePersist = (
-  config: StateCreator<ICartStore>,
-  options: PersistOptions<ICartStoreStates>
-) => StateCreator<ICartStore>;
+export type CartStorePersist = (
+  config: StateCreator<CartStore>,
+  options: PersistOptions<CartStoreStates>
+) => StateCreator<CartStore>;
 
-export interface ICartStoreActions {
+export interface CartStoreActions {
   setItemCart: (select: MarketItemType[]) => void;
 }
 
-export interface ICartStore extends ICartStoreStates, ICartStoreActions {}
+export interface CartStore extends CartStoreStates, CartStoreActions {}
