@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MarketItem from "@/components/MarketItem/MarketItem";
 import useItemList from "@/hook/useItemList";
 import { useItemCartStore } from "@/store/item";
+import Spinner from "@/components/Spinner/Spinner";
 import { MarketItemType } from "@/utils/types";
 
 interface PropsType {
@@ -14,7 +15,8 @@ const SearchList = ({ keywordQuery }: PropsType) => {
   /**
    * 아이템 리스트 get hook
    */
-  const { data } = useItemList();
+  const { status, result } = useItemList({ depth1: "a1" });
+  status !== "success" && console.log(result);
 
   /**
    * 장바구니 로직
@@ -24,42 +26,47 @@ const SearchList = ({ keywordQuery }: PropsType) => {
       alert("이미 장바구니에 담겨있습니다");
       return;
     }
-    if (data) setItemCart(data.filter((i: MarketItemType) => i.id === id));
+    if (result) setItemCart(result.filter((i: MarketItemType) => i.id === id));
   };
 
   /**
-   * 아이템 data fetch
+   * 아이템 result fetch
    */
   useEffect(() => {
-    if (data) setItemList(data);
-  }, [data]);
+    if (result) setItemList(result);
+    console.log(itemList);
+  }, [result, itemList]);
 
-  return (
-    <div className="search__list">
-      <ul className="inner">
-        {itemList
-          .filter((list) => list.title.includes(keywordQuery))
-          .map((item) => (
-            <li key={item.id}>
-              <MarketItem
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                thumbnail={item.thumbnail}
-                price={item.price}
-                discountPercentage={item.discountPercentage}
-              />
-              <button
-                className="button__cart"
-                type="button"
-                onClick={() => onCartItem(item.id)}
-              >
-                <span className="blind">장바구니에 담기</span>
-              </button>
-            </li>
-          ))}
-      </ul>
-    </div>
-  );
+  if (status !== "success") {
+    return <Spinner />;
+  } else {
+    return (
+      <div className="search__list">
+        <ul className="inner">
+          {itemList
+            .filter((list) => list.title.includes(keywordQuery))
+            .map((item) => (
+              <li key={item.id}>
+                <MarketItem
+                  id={item.id}
+                  title={item.title}
+                  description={item.description}
+                  thumbnail={item.thumbnail}
+                  price={item.price}
+                  discountPercentage={item.discountPercentage}
+                />
+                <button
+                  className="button__cart"
+                  type="button"
+                  onClick={() => onCartItem(item.id)}
+                >
+                  <span className="blind">장바구니에 담기</span>
+                </button>
+              </li>
+            ))}
+        </ul>
+      </div>
+    );
+  }
 };
 export default SearchList;
