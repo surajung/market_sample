@@ -31,12 +31,6 @@ const initialState: CartStoreStates = {
   itemCart: [],
 };
 
-// interface SeletItemCartState {
-//   itemCart: MarketItemType[];
-//   setItemCart: (select: MarketItemType[]) => void;
-//   removeItemCart: (select: MarketItemType[]) => void;
-// }
-
 /**
  * 장바구니 스토어
  * localStorage를 활용하여 데이터를 브라우져에 저장
@@ -55,3 +49,12 @@ export const useItemCartStore = create<CartStore>(
     }
   )
 );
+
+interface filterStore {
+  filterList: [];
+  setFilterList: (select: any) => void;
+}
+export const useFilterStore = create<filterStore>((set) => ({
+  filterList: [],
+  setFilterList: (select) => set(() => ({ filterList: select })),
+}));

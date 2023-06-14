@@ -6,11 +6,14 @@ import SearchFilter from "@/components/pages/SearchFilter";
 import SearchList from "@/components/pages/SearchList";
 import Modal from "@/components/Modal/Modal";
 import CategorySelect from "@/components/CategorySelect/CategorySelect";
+import { useFilterStore } from "@/store/item";
 
 const Search = () => {
   const router = useRouter();
   const [isModal, setIsModal] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
+  // 카테고리 3뎁스에서 선택된값
+  const { filterList, setFilterList } = useFilterStore();
 
   /**
    * 필터 모달 토글
@@ -29,7 +32,10 @@ const Search = () => {
     if (typeof router.query.keyword === "string") {
       setKeyword(router.query.keyword);
     }
-  }, [router.isReady, router.query.keyword]);
+    if (typeof router.query.filter === "object") {
+      setFilterList(router.query.filter);
+    }
+  }, [router.isReady, router.query, setFilterList]);
 
   return (
     <DefaultLayout>

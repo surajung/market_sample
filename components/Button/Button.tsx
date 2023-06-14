@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { MouseEventHandler } from "react";
 
 type Props = {
   variant: string;
@@ -6,6 +7,7 @@ type Props = {
   isDisabled?: boolean;
   size: string;
   children: React.ReactNode;
+  onHandler?: MouseEventHandler;
 };
 
 const Button = ({
@@ -14,6 +16,7 @@ const Button = ({
   isDisabled,
   size,
   children,
+  onHandler,
 }: Props) => {
   const classes = classNames("button", {
     [`button--fullwidth`]: isFullWidth,
@@ -22,7 +25,12 @@ const Button = ({
     [`button--${size}`]: size.length,
   });
   return (
-    <button type="button" className={classes} disabled={isDisabled}>
+    <button
+      type="button"
+      className={classes}
+      disabled={isDisabled}
+      onClick={onHandler}
+    >
       {children}
     </button>
   );

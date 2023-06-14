@@ -1,14 +1,11 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import codes from "@/utils/constants";
 import { useState } from "react";
 import Checkbox from "@/components/Checkbox/Checkbox";
 import Button from "@/components/Button/Button";
 import CheckboxGroup from "../Checkbox/CheckboxGroup";
-import { MarketItemType } from "@/utils/types";
-
-type Code = {
-  code: string;
-  codename: string;
-};
+import { useFilterStore } from "@/store/item";
 
 type CodesType3 = {
   code: string;
@@ -28,22 +25,32 @@ type CodesType1 = {
 };
 
 const CategorySelect = () => {
-  /**
-   * 아이템 리스트 get hook
-   */
+  const router = useRouter();
+  // 카테고리 아코디언 토글
   const [isSelectDepth1, setIsSelectDepth1] = useState<number>(0);
-  const [isSelectDepth2, setIsSelectDepth2] = useState<number>(-1);
-  const [filterList, setFilterList] = useState([]);
+  const [isSelectDepth2, setIsSelectDepth2] = useState<string>("-1");
+  // 카테고리 3뎁스에서 선택된값
+  const { filterList, setFilterList } = useFilterStore();
 
+  // 아코디언 토글을 위한 함수
   const expandDepth1 = (n: number) => {
     setIsSelectDepth1(n);
   };
-  const expandDepth2 = (n: number) => {
+  const expandDepth2 = (n: string) => {
     if (isSelectDepth2 === n) {
-      setIsSelectDepth2(-1);
+      setIsSelectDepth2("-1");
     } else {
       setIsSelectDepth2(n);
     }
+  };
+
+  const filterListFetch = () => {
+    const obj = { filter: filterList };
+    const payload = Object.entries(obj)
+      .map((item) => item.join("=").replace(/,/g, "&" + item[0] + "="))
+      .join("&");
+    router.push(`/search/?${payload}`);
+    router.reload();
   };
 
   return (
@@ -67,7 +74,7 @@ const CategorySelect = () => {
                   {item1.depth2.map((item2: CodesType2) => (
                     <li
                       className={
-                        isSelectDepth2 === Number(item2.code)
+                        isSelectDepth2 === item2.code
                           ? "category-select__depth2--selected"
                           : ""
                       }
@@ -77,7 +84,7 @@ const CategorySelect = () => {
                       <button
                         type="button"
                         className="button_expand"
-                        onClick={() => expandDepth2(Number(item2.code))}
+                        onClick={() => expandDepth2(item2.code)}
                       >
                         <span className="blind">확장</span>
                       </button>
@@ -85,7 +92,7 @@ const CategorySelect = () => {
                       <fieldset>
                         <ul
                           className={`category-select__depth3 ${
-                            isSelectDepth2 === Number(item2.code)
+                            isSelectDepth2 === item2.code
                               ? "category-select__depth3--open"
                               : ""
                           }`}
@@ -113,7 +120,13 @@ const CategorySelect = () => {
           )}
         </ul>
       </div>
-      <Button variant="primary_filled" size="h56" isFullWidth={true}>
+      <Button
+        variant="primary_filled"
+        size="h56"
+        isFullWidth={true}
+        isDisabled={filterList.length === 0}
+        onHandler={filterListFetch}
+      >
         선택하기
       </Button>
     </>

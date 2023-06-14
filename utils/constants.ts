@@ -271,6 +271,85 @@ const codes = {
         ],
       },
     ],
+    filterList: [
+      {
+        code: "c1",
+        codename: "양파",
+      },
+      {
+        code: "c2",
+        codename: "마늘",
+      },
+      {
+        code: "c3",
+        codename: "대파",
+      },
+      {
+        code: "c4",
+        codename: "상추",
+      },
+      {
+        code: "c5",
+        codename: "쌈채소",
+      },
+      {
+        code: "c6",
+        codename: "깻잎",
+      },
+      {
+        code: "c7",
+        codename: "시금치",
+      },
+      {
+        code: "c8",
+        codename: "잎채소",
+      },
+      {
+        code: "c9",
+        codename: "나물",
+      },
+      {
+        code: "c10",
+        codename: "호박",
+      },
+      {
+        code: "c11",
+        codename: "가지",
+      },
+      {
+        code: "c12",
+        codename: "옥수수",
+      },
+      {
+        code: "c13",
+        codename: "오이",
+      },
+      {
+        code: "c14",
+        codename: "파프리카",
+      },
+      {
+        code: "c15",
+        codename: "피망",
+      },
+      {
+        code: "c16",
+        codename: "고추",
+      },
+      {
+        code: "c17",
+        codename: "skincare",
+      },
+      {
+        code: "c18",
+        codename: "fragrances",
+      },
+
+      {
+        code: "c19",
+        codename: "laptops",
+      },
+    ],
   },
 };
 export default Object.freeze(codes);
