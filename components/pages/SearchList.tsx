@@ -15,8 +15,7 @@ const SearchList = ({ keywordQuery }: PropsType) => {
   /**
    * 아이템 리스트 get hook
    */
-  const { status, result } = useItemList({ depth1: "a1" });
-  status !== "success" && console.log(result);
+  const { isFetching, data } = useItemList();
 
   /**
    * 장바구니 로직
@@ -26,18 +25,17 @@ const SearchList = ({ keywordQuery }: PropsType) => {
       alert("이미 장바구니에 담겨있습니다");
       return;
     }
-    if (result) setItemCart(result.filter((i: MarketItemType) => i.id === id));
+    if (data) setItemCart(data.filter((i: MarketItemType) => i.id === id));
   };
 
   /**
-   * 아이템 result fetch
+   * 아이템 data fetch
    */
   useEffect(() => {
-    if (result) setItemList(result);
-    console.log(itemList);
-  }, [result, itemList]);
+    if (data) setItemList(data);
+  }, [data]);
 
-  if (status !== "success") {
+  if (isFetching) {
     return <Spinner />;
   } else {
     return (

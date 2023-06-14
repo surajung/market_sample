@@ -4,17 +4,26 @@ import { MarketItemType } from "@/utils/types";
 import { CartStore, CartStorePersist, CartStoreStates } from "./itemType";
 
 interface SeletItemState {
-  item: MarketItemType[];
-  setItem: (list: MarketItemType[]) => void;
+  itemDepth1: MarketItemType[];
+  itemDepth2: MarketItemType[];
+  itemDepth3: MarketItemType[];
+  setItemDepth1: (list: MarketItemType[]) => void;
+  setItemDepth2: (list: MarketItemType[]) => void;
+  setItemDepth3: (list: MarketItemType[]) => void;
 }
 /**
- * @deprecated
- * 최초 아이템 리스트 store
- * react-query chace 로 인해 불필요
+ * 필터링된 아이템 리스트 store
  */
-export const useItemStore = create<SeletItemState>((set) => ({
-  item: [],
-  setItem: (list) => set((state) => ({ ...state, item: list })),
+export const useFilterItemStore = create<SeletItemState>((set) => ({
+  itemDepth1: [],
+  itemDepth2: [],
+  itemDepth3: [],
+  setItemDepth1: (list) =>
+    set((state) => ({ itemDepth1: state.itemDepth1.concat(list) })),
+  setItemDepth2: (list) =>
+    set((state) => ({ itemDepth2: state.itemDepth2.concat(list) })),
+  setItemDepth3: (list) =>
+    set((state) => ({ itemDepth3: state.itemDepth3.concat(list) })),
 }));
 
 // 장바구니 스토어 내 state 초기값에 대한 정의
@@ -22,11 +31,11 @@ const initialState: CartStoreStates = {
   itemCart: [],
 };
 
-interface SeletItemCartState {
-  itemCart: MarketItemType[];
-  setItemCart: (select: MarketItemType[]) => void;
-  removeItemCart: (select: MarketItemType[]) => void;
-}
+// interface SeletItemCartState {
+//   itemCart: MarketItemType[];
+//   setItemCart: (select: MarketItemType[]) => void;
+//   removeItemCart: (select: MarketItemType[]) => void;
+// }
 
 /**
  * 장바구니 스토어
@@ -38,7 +47,7 @@ export const useItemCartStore = create<CartStore>(
       itemCart: initialState.itemCart,
       setItemCart: (select) =>
         set((state) => ({ itemCart: state.itemCart.concat(select) })),
-      removeItemCart: (select: any) => set((state) => ({ itemCart: select })),
+      removeItemCart: (select: any) => set(() => ({ itemCart: select })),
     }),
     {
       name: "cartStorage",

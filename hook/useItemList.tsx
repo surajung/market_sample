@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useFilterItemStore } from "@/store/item";
 import { MarketItemType } from "@/utils/types";
 
 /**
@@ -22,28 +22,19 @@ interface paramsType {
   depth2?: string | undefined;
   depth3?: string | undefined;
 }
-const useItemList = (params?: paramsType) => {
-  const [result, setResult] = useState<MarketItemType[]>();
-  const { status, data } = useQuery<MarketItemType[]>(["itemList"], getList, {
-    onSuccess(data) {
-      if (params === undefined) {
-        setResult(data);
-      } else {
-        setResult(
-          data.filter((list) => {
-            const isDepth1 = list.depth1 === params.depth1;
-            const isDepth2 = params.depth2
-              ? list.depth2 === params.depth2
-              : true;
-            const isDepth3 = params.depth3
-              ? list.depth3 === params.depth3
-              : true;
-            return isDepth1 && isDepth2 && isDepth3;
-          })
-        );
-      }
-    },
-  });
-  return { status, result };
+const useItemList = () => {
+  const { setItemDepth1, setItemDepth2, setItemDepth3 } = useFilterItemStore();
+  const { isLoading, data, isFetching } = useQuery<MarketItemType[]>(
+    ["itemList"],
+    getList,
+    {
+      onSuccess(data) {
+        setItemDepth1(data.filter((list) => list.depth1 === "a1"));
+        setItemDepth2(data.filter((list) => list.depth1 === "a2"));
+        setItemDepth3(data.filter((list) => list.depth1 === "a3"));
+      },
+    }
+  );
+  return { isLoading, data, isFetching };
 };
 export default useItemList;
