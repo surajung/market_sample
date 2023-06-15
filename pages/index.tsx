@@ -144,9 +144,6 @@ function Index() {
               price={item.price}
               discountPercentage={item.discountPercentage}
               key={item.id}
-              depth1=""
-              depth2=""
-              depth3=""
             />
           ))}
         </dd>

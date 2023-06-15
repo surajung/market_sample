@@ -15,12 +15,13 @@ const SearchList = ({ keywordQuery }: PropsType) => {
   const { filterList } = useFilterStore();
   const { itemCart, setItemCart } = useItemCartStore((state: any) => state);
   /**
-   * 아이템 리스트 get hook
+   * 아이템 리스트 fetch hook
    */
   const { isFetching, data } = useItemList();
 
   /**
-   * 카테고리 선택에 따른 아이템 필터링
+   * 카테고리 선택에 따른 아이템 리스트 노출조건 필터링
+   * @returns boolean
    */
   const filteringList = (list: MarketItemFilerType) => {
     if (keywordQuery.length > 0) {
@@ -33,7 +34,8 @@ const SearchList = ({ keywordQuery }: PropsType) => {
   };
 
   /**
-   * 장바구니 로직
+   * 장바구니 담기 로직
+   * 중복일땐 얼럿처리
    */
   const onCartItem = (id: number) => {
     if (itemCart.some((x: MarketItemFilerType) => x.id === id)) {
@@ -42,9 +44,7 @@ const SearchList = ({ keywordQuery }: PropsType) => {
     }
     if (data) setItemCart(data.filter((i: MarketItemFilerType) => i.id === id));
   };
-  /**
-   * 아이템 data fetch
-   */
+
   useEffect(() => {
     if (data) setItemList(data);
   }, [data]);

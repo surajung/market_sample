@@ -21,7 +21,7 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
   const { data } = useItemList();
 
   /**
-   * 검색어입력 submit -> 파라미터로 검색어 주입
+   * 검색어입력 submit -> url에 quert string으로 검색어(키워드) 주입
    */
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     router.push(`/search/?keyword=${keyword}`);
@@ -29,10 +29,10 @@ const SearchTextfield = ({ keywordQuery = "" }: PropsType) => {
     event.preventDefault();
   };
 
-  /**
-   * 검색어 입력되면 자동완성 리스트 노출
-   */
   useEffect(() => {
+    /**
+     * 검색어 입력되면 자동완성 리스트 노출
+     */
     setIsAutocorrectLayer(keyword !== "");
     if (data) {
       setAutocorrectList(

@@ -22,13 +22,13 @@ const Search = () => {
     setIsModal((prev) => !prev);
   };
 
-  /**
-   * 파라미터에 검색키워드 주입시 리스트 필터링
-   */
   useEffect(() => {
     if (!router.isReady) {
       return;
     }
+    /**
+     * url query string에 검색키워드&카테고리 있을때 리스트 필터링
+     */
     if (typeof router.query.keyword === "string") {
       setKeyword(router.query.keyword);
       setFilterList([]);

@@ -1,5 +1,5 @@
 /**
- * 카테고리 코드값
+ * 카테고리(키워드) 코드값
  */
 const codes = {
   marketItemCategory: {
