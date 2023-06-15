@@ -13,7 +13,7 @@ const Search = () => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>("");
   // 카테고리 3뎁스에서 선택된값
-  const { filterList, setFilterList } = useFilterStore();
+  const { setFilterList } = useFilterStore();
 
   /**
    * 필터 모달 토글
@@ -31,6 +31,7 @@ const Search = () => {
     }
     if (typeof router.query.keyword === "string") {
       setKeyword(router.query.keyword);
+      setFilterList([]);
     } else if (typeof router.query.filter === "object") {
       setFilterList(router.query.filter);
     } else if (typeof router.query.filter === "string") {

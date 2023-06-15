@@ -19,6 +19,9 @@ const SearchList = ({ keywordQuery }: PropsType) => {
    */
   const { isFetching, data } = useItemList();
 
+  /**
+   * 카테고리 선택에 따른 아이템 필터링
+   */
   const filteringList = (list: MarketItemType) => {
     if (keywordQuery.length > 0) {
       return list.title.includes(keywordQuery);

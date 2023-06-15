@@ -7,6 +7,9 @@ import { MarketItemType } from "@/utils/types";
 const Cart = () => {
   const { itemCart, removeItemCart } = useItemCartStore((state: any) => state);
   const [cartList, setCartList] = useState<MarketItemType[]>([]);
+  /**
+   * 장바구니 아이템 삭제
+   */
   const onRemoveCartItem = (id: number) => {
     removeItemCart(itemCart.filter((i: MarketItemType) => i.id !== id));
   };
@@ -27,6 +30,9 @@ const Cart = () => {
                   thumbnail={item.thumbnail}
                   price={item.price}
                   discountPercentage={item.discountPercentage}
+                  depth1=""
+                  depth2=""
+                  depth3=""
                 />
                 <button
                   className="button__delete"
