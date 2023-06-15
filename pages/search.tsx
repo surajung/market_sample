@@ -31,9 +31,10 @@ const Search = () => {
     }
     if (typeof router.query.keyword === "string") {
       setKeyword(router.query.keyword);
-    }
-    if (typeof router.query.filter === "object") {
+    } else if (typeof router.query.filter === "object") {
       setFilterList(router.query.filter);
+    } else if (typeof router.query.filter === "string") {
+      setFilterList([router.query.filter]);
     }
   }, [router.isReady, router.query, setFilterList]);
 
@@ -46,7 +47,7 @@ const Search = () => {
       </div>
       {isModal && (
         <Modal title="카테고리" height="500px" onHandler={toggleModal}>
-          <CategorySelect />
+          <CategorySelect setKeyword={setKeyword} onHandler={toggleModal} />
         </Modal>
       )}
     </DefaultLayout>

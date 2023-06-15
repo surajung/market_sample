@@ -51,7 +51,7 @@ export const useItemCartStore = create<CartStore>(
 );
 
 interface filterStore {
-  filterList: [];
+  filterList: string[];
   setFilterList: (select: any) => void;
 }
 export const useFilterStore = create<filterStore>((set) => ({

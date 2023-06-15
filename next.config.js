@@ -8,7 +8,14 @@ const nextConfig = {
   },
   trailingSlash: true,
   images: {
-    domains: ["i.dummyjson.com"],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "i.dummyjson.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

@@ -38,6 +38,10 @@
       padding: 0 0 0 22px;
       width: calc(100% - 37px);
       height: 34px;
+      overflow-x: scroll;
+      .inner {
+        display: flex;
+      }
     }
     &--button {
       width: 34px;

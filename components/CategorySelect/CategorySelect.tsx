@@ -24,13 +24,18 @@ type CodesType1 = {
   depth2: CodesType2[];
 };
 
-const CategorySelect = () => {
+interface PropsType {
+  setKeyword: React.Dispatch<string>;
+  onHandler: React.MouseEventHandler;
+}
+const CategorySelect = ({ setKeyword, onHandler }: PropsType) => {
   const router = useRouter();
   // 카테고리 아코디언 토글
   const [isSelectDepth1, setIsSelectDepth1] = useState<number>(0);
   const [isSelectDepth2, setIsSelectDepth2] = useState<string>("-1");
   // 카테고리 3뎁스에서 선택된값
   const { filterList, setFilterList } = useFilterStore();
+  const [filterChecked, setFilterChecked] = useState<string[]>([]);
 
   // 아코디언 토글을 위한 함수
   const expandDepth1 = (n: number) => {
@@ -43,15 +48,20 @@ const CategorySelect = () => {
       setIsSelectDepth2(n);
     }
   };
-
   const filterListFetch = () => {
-    const obj = { filter: filterList };
+    const obj = { filter: filterChecked };
     const payload = Object.entries(obj)
       .map((item) => item.join("=").replace(/,/g, "&" + item[0] + "="))
       .join("&");
+    setFilterList(filterChecked);
+    setKeyword("");
+    onHandler();
     router.push(`/search/?${payload}`);
-    router.reload();
   };
+
+  useEffect(() => {
+    setFilterChecked(filterList !== undefined ? filterList : []);
+  }, [filterList, setFilterChecked]);
 
   return (
     <>
@@ -99,8 +109,8 @@ const CategorySelect = () => {
                         >
                           <CheckboxGroup
                             label="검색필터"
-                            values={filterList}
-                            onChange={setFilterList}
+                            values={filterChecked}
+                            onChange={setFilterChecked}
                           >
                             {item2.depth3.map((item3: CodesType3) => (
                               <li key={item3.code}>
@@ -124,7 +134,7 @@ const CategorySelect = () => {
         variant="primary_filled"
         size="h56"
         isFullWidth={true}
-        isDisabled={filterList.length === 0}
+        isDisabled={filterChecked.length === 0}
         onHandler={filterListFetch}
       >
         선택하기

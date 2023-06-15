@@ -36,7 +36,6 @@ function Index() {
     setIsModal((prev) => !prev);
   };
   const onChipsDelete = (id: number) => {
-    console.log(`${id}번 삭제`);
     setChipsList(chipsList.filter((chips) => chips.id !== id));
   };
   useEffect(() => {
@@ -49,7 +48,12 @@ function Index() {
       <dl className="template__list">
         <dt>Button</dt>
         <dd>
-          <Button variant="primary_filled" size="h56" isFullWidth={true}>
+          <Button
+            variant="primary_filled"
+            size="h56"
+            isFullWidth={true}
+            isDisabled={false}
+          >
             선택 완료
           </Button>
           <Button
@@ -63,7 +67,8 @@ function Index() {
         </dd>
         <dt>
           TextInput <i>({keyword ? keyword : "빈값"})</i>
-        </dt>1
+        </dt>
+        1
         <dd>
           <TextInput
             id="search"
@@ -79,10 +84,10 @@ function Index() {
         </dt>
         <dd>
           <Checkbox
-            id="test"
             size="h24"
-            isChecked={isChecked}
+            checked={isChecked}
             onChange={setIsChecked}
+            value=""
           >
             선택합니다.
           </Checkbox>
@@ -103,7 +108,12 @@ function Index() {
           {isModal && (
             <Modal title="제목" height="500px" onHandler={() => onModalClose()}>
               <CategorySelect />
-              <Button variant="primary_filled" size="h56" isFullWidth={true}>
+              <Button
+                variant="primary_filled"
+                size="h56"
+                isFullWidth={true}
+                isDisabled={false}
+              >
                 선택하기
               </Button>
             </Modal>
@@ -134,6 +144,9 @@ function Index() {
               price={item.price}
               discountPercentage={item.discountPercentage}
               key={item.id}
+              depth1=""
+              depth2=""
+              depth3=""
             />
           ))}
         </dd>

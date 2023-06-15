@@ -13,13 +13,8 @@ const MarketItem = ({
     <>
       <div className="market-item" id={String(id)}>
         <figure className="market-item__image" title={description}>
-          <Image
-            src={thumbnail}
-            width={152}
-            height={152}
-            alt={description}
-            priority
-          />
+          {/* <Image src={thumbnail} width={152} height={152} alt={description} /> */}
+          <img src={thumbnail} alt={description} />
         </figure>
         <p className="market-item__title">{title}</p>
         {discountPercentage !== 0 && (

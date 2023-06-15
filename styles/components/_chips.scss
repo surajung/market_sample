@@ -8,6 +8,7 @@
   height: 34px;
   @include font(14px, 22px, 0);
   color: #24abbe;
+  white-space: nowrap;
   &:last-child {
     margin-right: 0;
   }

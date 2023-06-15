@@ -11,7 +11,7 @@ interface toggleValueType {
   value: string;
 }
 const CheckboxGroup = ({ label, children, values, onChange }: PropsType) => {
-  const isChecked = (value: any) => values.includes(value);
+  const isChecked = (value: string) => values.includes(value);
   const toggleValue = ({ checked, value }: toggleValueType) => {
     if (checked) {
       onChange(values.concat(value));

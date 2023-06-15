@@ -13,19 +13,19 @@ const codes = {
             codename: "야채/채소",
             depth3: [
               {
-                code: "c1",
+                code: "c01",
                 codename: "양파",
               },
               {
-                code: "c2",
+                code: "c02",
                 codename: "마늘",
               },
               {
-                code: "c3",
+                code: "c03",
                 codename: "대파",
               },
               {
-                code: "c4",
+                code: "c04",
                 codename: "상추",
               },
             ],
@@ -35,19 +35,19 @@ const codes = {
             codename: "과일",
             depth3: [
               {
-                code: "c5",
+                code: "c05",
                 codename: "쌈채소",
               },
               {
-                code: "c6",
+                code: "c06",
                 codename: "깻잎",
               },
               {
-                code: "c7",
+                code: "c07",
                 codename: "시금치",
               },
               {
-                code: "c8",
+                code: "c08",
                 codename: "잎채소",
               },
             ],
@@ -57,7 +57,7 @@ const codes = {
             codename: "쌀/잡곡/견과",
             depth3: [
               {
-                code: "c9",
+                code: "c09",
                 codename: "나물",
               },
               {
@@ -205,19 +205,19 @@ const codes = {
             codename: "XX",
             depth3: [
               {
-                code: "c1",
+                code: "c01",
                 codename: "양파",
               },
               {
-                code: "c2",
+                code: "c02",
                 codename: "마늘",
               },
               {
-                code: "c3",
+                code: "c03",
                 codename: "대파",
               },
               {
-                code: "c4",
+                code: "c04",
                 codename: "상추",
               },
             ],
@@ -227,19 +227,19 @@ const codes = {
             codename: "CC",
             depth3: [
               {
-                code: "c5",
+                code: "c05",
                 codename: "쌈채소",
               },
               {
-                code: "c6",
+                code: "c06",
                 codename: "깻잎",
               },
               {
-                code: "c7",
+                code: "c07",
                 codename: "시금치",
               },
               {
-                code: "c8",
+                code: "c08",
                 codename: "잎채소",
               },
             ],
@@ -273,39 +273,39 @@ const codes = {
     ],
     filterList: [
       {
-        code: "c1",
+        code: "c01",
         codename: "양파",
       },
       {
-        code: "c2",
+        code: "c02",
         codename: "마늘",
       },
       {
-        code: "c3",
+        code: "c03",
         codename: "대파",
       },
       {
-        code: "c4",
+        code: "c04",
         codename: "상추",
       },
       {
-        code: "c5",
+        code: "c05",
         codename: "쌈채소",
       },
       {
-        code: "c6",
+        code: "c06",
         codename: "깻잎",
       },
       {
-        code: "c7",
+        code: "c07",
         codename: "시금치",
       },
       {
-        code: "c8",
+        code: "c08",
         codename: "잎채소",
       },
       {
-        code: "c9",
+        code: "c09",
         codename: "나물",
       },
       {

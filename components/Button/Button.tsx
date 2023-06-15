@@ -4,7 +4,7 @@ import { MouseEventHandler } from "react";
 type Props = {
   variant: string;
   isFullWidth: boolean;
-  isDisabled?: boolean;
+  isDisabled: boolean;
   size: string;
   children: React.ReactNode;
   onHandler?: MouseEventHandler;
