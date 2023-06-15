@@ -38,7 +38,8 @@
       padding: 0 0 0 22px;
       width: calc(100% - 37px);
       height: 34px;
-      overflow-x: scroll;
+      overflow-x: auto;
+      overflow-y: hidden;
       .inner {
         display: flex;
       }

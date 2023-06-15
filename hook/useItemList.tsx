@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useFilterItemStore } from "@/store/item";
-import { MarketItemType } from "@/utils/types";
+import { MarketItemFilerType } from "@/utils/types";
 
 /**
  * mock data request
@@ -24,7 +24,7 @@ interface paramsType {
 }
 const useItemList = () => {
   const { setItemDepth1, setItemDepth2, setItemDepth3 } = useFilterItemStore();
-  const { isLoading, data, isFetching } = useQuery<MarketItemType[]>(
+  const { isLoading, data, isFetching } = useQuery<MarketItemFilerType[]>(
     ["itemList"],
     getList,
     {

@@ -30,9 +30,6 @@ const Cart = () => {
                   thumbnail={item.thumbnail}
                   price={item.price}
                   discountPercentage={item.discountPercentage}
-                  depth1=""
-                  depth2=""
-                  depth3=""
                 />
                 <button
                   className="button__delete"

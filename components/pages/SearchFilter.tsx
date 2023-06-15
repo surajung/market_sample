@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Chips from "@/components/Chips/Chips";
 import { useFilterStore } from "@/store/item";
 import codes from "@/utils/constants";
-import { MarketItemType } from "@/utils/types";
 
 interface PropsTypes {
   onHandler: React.MouseEventHandler;
@@ -13,10 +12,15 @@ interface CodeProps {
 }
 
 const SearchFilter = ({ onHandler }: PropsTypes) => {
+  const router = useRouter();
   const { filterList, setFilterList } = useFilterStore();
   const onChipsDelete = (code: string) => {
-    console.log(filterList, `${code}번 삭제`);
+    const obj = { filter: filterList.filter((chips) => chips !== code) };
+    const payload = Object.entries(obj)
+      .map((item) => item.join("=").replace(/,/g, "&" + item[0] + "="))
+      .join("&");
     setFilterList(filterList.filter((chips) => chips !== code));
+    router.push(`/search/?${payload}`);
   };
 
   const filteringList = (list: CodeProps) => {

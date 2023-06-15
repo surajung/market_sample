@@ -3,14 +3,14 @@ import MarketItem from "@/components/MarketItem/MarketItem";
 import useItemList from "@/hook/useItemList";
 import { useItemCartStore, useFilterStore } from "@/store/item";
 import Spinner from "@/components/Spinner/Spinner";
-import { MarketItemType } from "@/utils/types";
+import { MarketItemFilerType } from "@/utils/types";
 
 interface PropsType {
   keywordQuery: string;
 }
 
 const SearchList = ({ keywordQuery }: PropsType) => {
-  const [itemList, setItemList] = useState<MarketItemType[]>([]);
+  const [itemList, setItemList] = useState<MarketItemFilerType[]>([]);
   // 카테고리 3뎁스에서 선택된값
   const { filterList } = useFilterStore();
   const { itemCart, setItemCart } = useItemCartStore((state: any) => state);
@@ -22,7 +22,7 @@ const SearchList = ({ keywordQuery }: PropsType) => {
   /**
    * 카테고리 선택에 따른 아이템 필터링
    */
-  const filteringList = (list: MarketItemType) => {
+  const filteringList = (list: MarketItemFilerType) => {
     if (keywordQuery.length > 0) {
       return list.title.includes(keywordQuery);
     } else if (filterList !== undefined) {
@@ -36,11 +36,11 @@ const SearchList = ({ keywordQuery }: PropsType) => {
    * 장바구니 로직
    */
   const onCartItem = (id: number) => {
-    if (itemCart.some((x: MarketItemType) => x.id === id)) {
+    if (itemCart.some((x: MarketItemFilerType) => x.id === id)) {
       alert("이미 장바구니에 담겨있습니다");
       return;
     }
-    if (data) setItemCart(data.filter((i: MarketItemType) => i.id === id));
+    if (data) setItemCart(data.filter((i: MarketItemFilerType) => i.id === id));
   };
   /**
    * 아이템 data fetch
@@ -66,9 +66,6 @@ const SearchList = ({ keywordQuery }: PropsType) => {
                   thumbnail={item.thumbnail}
                   price={item.price}
                   discountPercentage={item.discountPercentage}
-                  depth1=""
-                  depth2=""
-                  depth3=""
                 />
                 <button
                   className="button__cart"

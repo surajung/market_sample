@@ -5,6 +5,9 @@ export interface MarketItemType {
   thumbnail: string;
   price: number;
   discountPercentage: number;
+}
+
+export interface MarketItemFilerType extends MarketItemType {
   depth1: string;
   depth2: string;
   depth3: string;
