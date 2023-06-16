@@ -9,5 +9,8 @@ interface PropsType {
   isChecked: (value: string) => boolean;
   toggleValue: ({ checked, value }: Prop) => void;
 }
-const CheckboxContext = createContext<PropsType | undefined>(undefined);
+const CheckboxContext = createContext<PropsType>({
+  isChecked: () => false,
+  toggleValue: () => {},
+});
 export default CheckboxContext;

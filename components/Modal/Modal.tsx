@@ -3,7 +3,7 @@ interface PropsTypes {
   title: string;
   height: string;
   children: React.ReactNode;
-  onHandler: React.MouseEventHandler;
+  onHandler: () => void;
 }
 
 const Modal = ({

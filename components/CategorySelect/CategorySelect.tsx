@@ -26,7 +26,7 @@ type CodesType1 = {
 
 interface PropsType {
   setKeyword: React.Dispatch<string>;
-  onHandler: React.MouseEventHandler;
+  onHandler: () => void;
 }
 const CategorySelect = ({ setKeyword, onHandler }: PropsType) => {
   const router = useRouter();

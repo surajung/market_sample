@@ -1,10 +1,11 @@
+import React from "react";
 import CheckboxContext from "./CheckboxContext";
 
 interface PropsType {
   label: string;
   children: React.ReactNode;
   values: string[];
-  onChange: any;
+  onChange: (values: any) => void;
 }
 interface toggleValueType {
   checked: boolean;
